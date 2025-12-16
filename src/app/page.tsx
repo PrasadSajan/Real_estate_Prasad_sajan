@@ -15,6 +15,7 @@ interface Property {
   description: string;
   description_mr?: string;
   price: string;
+  images?: string[];
 }
 
 import { supabase } from '@/lib/supabase';

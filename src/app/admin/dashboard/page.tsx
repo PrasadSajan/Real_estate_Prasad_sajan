@@ -10,6 +10,10 @@ const LocationPicker = dynamic(() => import('@/components/admin/LocationPicker')
     loading: () => <div className="h-[300px] bg-gray-100 animate-pulse rounded">Loading Map...</div>
 });
 
+import ImageUpload from '@/components/admin/ImageUpload';
+
+
+
 interface Property {
     id: string;
     title: string;
@@ -17,8 +21,9 @@ interface Property {
     description: string;
     description_mr?: string;
     price: string;
-    imageSrc: string;
-    imageAlt: string;
+    imagesrc: string;
+    imagealt: string;
+    images?: string[];
     latitude?: number;
     longitude?: number;
 }
@@ -35,8 +40,9 @@ export default function AdminDashboard() {
         description: '',
         description_mr: '',
         price: '',
-        imageSrc: 'https://placehold.co/600x400',
-        imageAlt: 'Property Image'
+        imagesrc: 'https://placehold.co/600x400',
+        imagealt: 'Property Image',
+        images: []
         // lat/lng are undefined by default
     });
 
@@ -77,8 +83,9 @@ export default function AdminDashboard() {
                 description: '',
                 description_mr: '',
                 price: '',
-                imageSrc: 'https://placehold.co/600x400',
-                imageAlt: 'Property Image',
+                imagesrc: 'https://placehold.co/600x400',
+                imagealt: 'Property Image',
+                images: [],
                 latitude: undefined,
                 longitude: undefined
             });
@@ -153,6 +160,15 @@ export default function AdminDashboard() {
                             value={formData.price || ''}
                             onChange={e => setFormData({ ...formData, price: e.target.value })}
                             required
+                        />
+
+                        <ImageUpload
+                            onUpload={(urls) => setFormData(prev => ({
+                                ...prev,
+                                images: urls,
+                                imagesrc: urls.length > 0 ? urls[0] : prev.imagesrc // Keep sync
+                            }))}
+                            currentImages={formData.images}
                         />
 
                         {/* Map Picker */}

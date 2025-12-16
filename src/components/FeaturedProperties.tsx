@@ -11,6 +11,7 @@ interface Property {
     id: string;
     imageSrc: string;
     imageAlt: string;
+    images?: string[];
     title: string;
     title_mr?: string;
     description: string;
@@ -38,7 +39,7 @@ export default function FeaturedProperties({ properties }: { properties: Propert
                 {properties.map((property: Property) => (
                     <PropertyCard
                         key={property.id}
-                        imageSrc={property.imageSrc}
+                        imageSrc={property.images && property.images.length > 0 ? property.images[0] : property.imageSrc}
                         imageAlt={property.imageAlt}
                         title={property.title}
                         title_mr={property.title_mr}
