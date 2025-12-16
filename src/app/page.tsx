@@ -17,12 +17,19 @@ interface Property {
   price: string;
 }
 
+import { supabase } from '@/lib/supabase';
+import localProperties from '@/data/properties.json';
+
 async function getProperties(): Promise<Property[]> {
-  const res = await fetch('http://localhost:3000/api/properties', { cache: 'no-store' }); // Added full URL and no-store cache
-  if (!res.ok) {
-    throw new Error('Failed to fetch properties');
+  try {
+    const { data, error } = await supabase.from('properties').select('*');
+    if (!error && data && data.length > 0) {
+      return data as Property[];
+    }
+  } catch (e) {
+    console.warn('Supabase fetch failed, using local data:', e);
   }
-  return res.json();
+  return localProperties;
 }
 
 export default async function Home() {

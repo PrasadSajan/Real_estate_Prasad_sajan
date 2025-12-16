@@ -1,7 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import PropertyCard from './PropertyCard';
+import dynamic from 'next/dynamic';
+
+const PropertyMapModal = dynamic(() => import('./PropertyMapModal'), { ssr: false });
 
 interface Property {
     id: string;
@@ -12,10 +16,13 @@ interface Property {
     description: string;
     description_mr?: string;
     price: string;
+    latitude?: number;
+    longitude?: number;
 }
 
 export default function FeaturedProperties({ properties }: { properties: Property[] }) {
     const { t } = useLanguage();
+    const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
 
     return (
         <section id="properties" className="container mx-auto py-20 px-4">
@@ -38,9 +45,22 @@ export default function FeaturedProperties({ properties }: { properties: Propert
                         description={property.description}
                         description_mr={property.description_mr}
                         price={property.price}
+                        latitude={property.latitude}
+                        longitude={property.longitude}
+                        onViewMap={() => setSelectedProperty(property)}
                     />
                 ))}
             </div>
+
+            {selectedProperty && selectedProperty.latitude && selectedProperty.longitude && (
+                <PropertyMapModal
+                    isOpen={!!selectedProperty}
+                    onClose={() => setSelectedProperty(null)}
+                    latitude={selectedProperty.latitude}
+                    longitude={selectedProperty.longitude}
+                    title={selectedProperty.title}
+                />
+            )}
         </section>
     );
 }
