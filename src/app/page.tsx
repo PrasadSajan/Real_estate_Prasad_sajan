@@ -4,6 +4,8 @@ import Hero from '../components/Hero';
 import FeaturedProperties from '../components/FeaturedProperties';
 import AboutSection from '../components/AboutSection';
 import ContactSection from '../components/ContactSection';
+import WhyChooseUs from '../components/WhyChooseUs';
+import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
 
 interface Property {
@@ -76,6 +78,8 @@ export default async function Home({ searchParams }: { searchParams: { location?
       {/* Featured Properties Section */}
       <FeaturedProperties properties={properties} />
 
+      <WhyChooseUs />
+      <Testimonials />
       <AboutSection />
       <ContactSection />
       <Footer />

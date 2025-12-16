@@ -3,7 +3,7 @@ import { formatPrice } from '@/utils/format';
 
 interface AdminPropertyCardProps {
     title: string;
-    price: string;
+    price: number; // Changed to number
     imageSrc: string;
     latitude?: number;
     longitude?: number;

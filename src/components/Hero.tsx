@@ -22,37 +22,66 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative bg-cover bg-center h-[85vh] flex items-center justify-center text-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Luxury+Living')" }}>
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80"></div>
+    <section id="home" className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Background Image with Zoom Effect */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0 animate-slow-zoom"
+        style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+      ></div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight drop-shadow-lg">{t.heroTitle}</h2>
-        <p className="text-xl md:text-2xl mb-12 font-light tracking-wide">{t.heroSubtitle}</p>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-0"></div>
 
-        {/* Search Bar */}
-        <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg shadow-2xl border border-white/20">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto space-y-8 animate-fade-in-up">
+        {/* Title */}
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white drop-shadow-2xl font-serif">
+          {t.heroTitle}
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-xl md:text-3xl text-gray-100 font-light tracking-wide max-w-3xl mx-auto drop-shadow-md">
+          {t.heroSubtitle}
+        </p>
+
+        {/* Search Bar Container - Glassmorphism */}
+        <div className="mt-12 bg-white/20 backdrop-blur-xl border border-white/30 p-4 md:p-6 rounded-2xl shadow-2xl max-w-4xl mx-auto transform transition-all hover:scale-[1.01]">
           <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4">
-            <input
-              type="text"
-              placeholder="Search locality (e.g., Temple Area, Vidyanagar)"
-              className="flex-1 p-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-            <select
-              className="flex-1 p-3 rounded-md bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
-              value={propertyType}
-              onChange={(e) => setPropertyType(e.target.value)}
-            >
-              <option value="">Property Type</option>
-              <option value="rowhouse">Row House</option>
-              <option value="plot">Plot</option>
-              <option value="flat">Flat</option>
-              <option value="land">Agricultural Land</option>
-            </select>
-            <button type="submit" className="bg-accent hover:bg-accent-hover text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-md uppercase tracking-wider">
-              {t.heroButton}
+            <div className="flex-grow group relative">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 z-10">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search by Location (e.g. Kothrud, Baner)"
+                className="w-full p-4 pl-12 rounded-xl bg-white/95 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-accent/30 transition-shadow text-lg font-medium"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </div>
+
+            <div className="md:w-1/4 relative">
+              <select
+                className="w-full h-full p-4 rounded-xl bg-white/95 text-gray-900 focus:outline-none focus:ring-4 focus:ring-accent/30 appearance-none text-lg font-medium"
+                value={propertyType}
+                onChange={(e) => setPropertyType(e.target.value)}
+              >
+                <option value="">All Types</option>
+                <option value="rowhouse">Row House</option>
+                <option value="plot">Plot</option>
+                <option value="flat">Flat</option>
+                <option value="land">Agri Land</option>
+                <option value="commercial">Commercial</option>
+              </select>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </div>
+
+            <button type="submit" className="bg-accent hover:bg-accent-hover text-white text-lg font-bold py-4 px-10 rounded-xl transition duration-300 shadow-lg hover:shadow-accent/50 active:scale-95 flex items-center justify-center gap-2">
+              <span>Search</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
             </button>
           </form>
         </div>

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import PropertyCard from './PropertyCard';
+import PropertyDetailsModal from './PropertyDetailsModal';
 import dynamic from 'next/dynamic';
 
 const PropertyMapModal = dynamic(() => import('./PropertyMapModal'), { ssr: false });
@@ -19,11 +20,14 @@ interface Property {
     price: string;
     latitude?: number;
     longitude?: number;
+    location?: string;
+    type?: string;
 }
 
 export default function FeaturedProperties({ properties }: { properties: Property[] }) {
     const { t } = useLanguage();
-    const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+    const [mapProperty, setMapProperty] = useState<Property | null>(null);
+    const [detailsProperty, setDetailsProperty] = useState<Property | null>(null);
 
     return (
         <section id="properties" className="container mx-auto py-20 px-4">
@@ -39,6 +43,7 @@ export default function FeaturedProperties({ properties }: { properties: Propert
                 {properties.map((property: Property) => (
                     <PropertyCard
                         key={property.id}
+                        id={property.id}
                         imageSrc={property.images && property.images.length > 0 ? property.images[0] : property.imageSrc}
                         imageAlt={property.imageAlt}
                         title={property.title}
@@ -48,18 +53,29 @@ export default function FeaturedProperties({ properties }: { properties: Propert
                         price={property.price}
                         latitude={property.latitude}
                         longitude={property.longitude}
-                        onViewMap={() => setSelectedProperty(property)}
+                        onViewMap={() => setMapProperty(property)}
+                        onClick={() => setDetailsProperty(property)}
                     />
                 ))}
             </div>
 
-            {selectedProperty && selectedProperty.latitude && selectedProperty.longitude && (
+            {/* Map Modal */}
+            {mapProperty && mapProperty.latitude && mapProperty.longitude && (
                 <PropertyMapModal
-                    isOpen={!!selectedProperty}
-                    onClose={() => setSelectedProperty(null)}
-                    latitude={selectedProperty.latitude}
-                    longitude={selectedProperty.longitude}
-                    title={selectedProperty.title}
+                    isOpen={!!mapProperty}
+                    onClose={() => setMapProperty(null)}
+                    latitude={mapProperty.latitude}
+                    longitude={mapProperty.longitude}
+                    title={mapProperty.title}
+                />
+            )}
+
+            {/* Details Modal */}
+            {detailsProperty && (
+                <PropertyDetailsModal
+                    isOpen={!!detailsProperty}
+                    onClose={() => setDetailsProperty(null)}
+                    property={detailsProperty}
                 />
             )}
         </section>

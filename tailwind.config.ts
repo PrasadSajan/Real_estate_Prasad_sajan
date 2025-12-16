@@ -21,6 +21,20 @@ const config: Config = {
           DEFAULT: '#d97706', // Amber 600
           hover: '#b45309',   // Amber 700
         }
+      },
+      keyframes: {
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slow-zoom': {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.1)' },
+        }
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 1s ease-out forwards',
+        'slow-zoom': 'slow-zoom 20s linear infinite alternate',
       }
     },
   },
