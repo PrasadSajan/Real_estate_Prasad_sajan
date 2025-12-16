@@ -18,7 +18,8 @@ export const translations = {
         contactEmail: "Your Email",
         contactMessage: "Your Message",
         contactButton: "Send Message",
-        footerRight: "© 2025 Real Estate Broker. All rights reserved."
+        footerRight: "© 2025 Real Estate Broker. All rights reserved.",
+        cardDetails: "Details"
     },
     mr: {
         headerTitle: "रिअल इस्टेट ब्रोकर",
@@ -39,6 +40,7 @@ export const translations = {
         contactEmail: "तुमचा ईमेल",
         contactMessage: "तुमचा संदेश",
         contactButton: "संदेश पाठवा",
-        footerRight: "© २०२५ रिअल इस्टेट ब्रोकर. सर्व हक्क राखीव."
+        footerRight: "© २०२५ रिअल इस्टेट ब्रोकर. सर्व हक्क राखीव.",
+        cardDetails: "तपशील"
     }
 };

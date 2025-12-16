@@ -18,9 +18,16 @@ export default function FeaturedProperties({ properties }: { properties: Propert
     const { t } = useLanguage();
 
     return (
-        <section id="properties" className="container mx-auto py-12 px-4">
-            <h2 className="text-4xl font-bold text-center mb-8">{t.featuredProperties}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section id="properties" className="container mx-auto py-20 px-4">
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary relative inline-block">
+                    {t.featuredProperties}
+                    <span className="block h-1 w-24 bg-accent mx-auto mt-4 rounded-full"></span>
+                </h2>
+                <p className="text-gray-600 mt-4 max-w-2xl mx-auto">Discover our hand-picked selection of premium properties available for you today.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {properties.map((property: Property) => (
                     <PropertyCard
                         key={property.id}
