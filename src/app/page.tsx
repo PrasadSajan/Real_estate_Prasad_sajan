@@ -16,25 +16,56 @@ interface Property {
   description_mr?: string;
   price: string;
   images?: string[];
+  type?: string;
 }
 
 import { supabase } from '@/lib/supabase';
 import localProperties from '@/data/properties.json';
 
-async function getProperties(): Promise<Property[]> {
-  try {
-    const { data, error } = await supabase.from('properties').select('*');
-    if (!error && data && data.length > 0) {
-      return data as Property[];
-    }
-  } catch (e) {
-    console.warn('Supabase fetch failed, using local data:', e);
-  }
-  return localProperties;
+// Helper to filter local data
+function filterLocalProperties(properties: any[], location?: string, type?: string) {
+  return properties.filter(p => {
+    const matchesLocation = location
+      ? (p.title?.toLowerCase().includes(location.toLowerCase()) || p.description?.toLowerCase().includes(location.toLowerCase()))
+      : true;
+    const matchesType = type
+      ? (p.type === type || p.title?.toLowerCase().includes(type.toLowerCase()))
+      : true;
+    return matchesLocation && matchesType;
+  });
 }
 
-export default async function Home() {
-  const properties = await getProperties();
+async function getProperties(location?: string, type?: string): Promise<Property[]> {
+  try {
+    let query = supabase.from('properties').select('*');
+
+    if (location) {
+      query = query.or(`title.ilike.%${location}%,description.ilike.%${location}%`);
+    }
+
+    if (type) {
+      // Exact match on the new 'type' column
+      query = query.eq('type', type);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      // Fallback to local data on error
+      return filterLocalProperties(localProperties, location, type) as Property[];
+    }
+
+    // Return data or empty array if no matches
+    return (data as Property[]) || [];
+
+  } catch (e) {
+    console.warn('Supabase fetch failed, using local data:', e);
+    return filterLocalProperties(localProperties, location, type) as Property[];
+  }
+}
+
+export default async function Home({ searchParams }: { searchParams: { location?: string, type?: string } }) {
+  const properties = await getProperties(searchParams.location, searchParams.type);
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans">

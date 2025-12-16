@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '../context/LanguageContext';
+import { formatPrice } from '@/utils/format';
 
 interface PropertyCardProps {
   imageSrc: string;
@@ -36,7 +37,7 @@ export default function PropertyCard({ imageSrc, imageAlt, title, title_mr, desc
         <h3 className="text-2xl font-bold mb-2 font-serif text-primary">{language === 'mr' && title_mr ? title_mr : title}</h3>
         <p className="text-gray-600 mb-4 text-sm leading-relaxed">{language === 'mr' && description_mr ? description_mr : description}</p>
         <div className="flex justify-between items-center border-t border-gray-100 pt-4">
-          <p className="text-xl font-bold text-accent">{price}</p>
+          <p className="text-xl font-bold text-accent">{formatPrice(price)}</p>
           <div className="flex gap-4">
             {latitude && longitude && onViewMap && (
               <button onClick={onViewMap} className="text-primary text-sm font-semibold uppercase tracking-wide border-b-2 border-transparent hover:border-accent transition-colors">

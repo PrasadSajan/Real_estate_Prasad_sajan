@@ -1,9 +1,25 @@
 'use client';
 
 import { useLanguage } from '../context/LanguageContext';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Hero() {
   const { t } = useLanguage();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [location, setLocation] = useState(searchParams.get('location') || '');
+  const [propertyType, setPropertyType] = useState(searchParams.get('type') || '');
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    if (location) params.set('location', location);
+    if (propertyType) params.set('type', propertyType);
+
+    router.push(`/?${params.toString()}`);
+  };
 
   return (
     <section id="home" className="relative bg-cover bg-center h-[85vh] flex items-center justify-center text-white" style={{ backgroundImage: "url('https://placehold.co/1920x1080?text=Luxury+Living')" }}>
@@ -16,9 +32,19 @@ export default function Hero() {
 
         {/* Search Bar */}
         <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg shadow-2xl border border-white/20">
-          <form className="flex flex-col md:flex-row gap-4">
-            <input type="text" placeholder="Search locality (e.g., Temple Area, Vidyanagar)" className="flex-1 p-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent" />
-            <select className="flex-1 p-3 rounded-md bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent">
+          <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4">
+            <input
+              type="text"
+              placeholder="Search locality (e.g., Temple Area, Vidyanagar)"
+              className="flex-1 p-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+            <select
+              className="flex-1 p-3 rounded-md bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent"
+              value={propertyType}
+              onChange={(e) => setPropertyType(e.target.value)}
+            >
               <option value="">Property Type</option>
               <option value="rowhouse">Row House</option>
               <option value="plot">Plot</option>
