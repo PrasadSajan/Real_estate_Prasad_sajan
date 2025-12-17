@@ -37,17 +37,28 @@ function filterLocalProperties(properties: any[], location?: string, type?: stri
   });
 }
 
-async function getProperties(location?: string, type?: string): Promise<Property[]> {
+async function getProperties(location?: string, type?: string, sort?: string): Promise<Property[]> {
   try {
     let query = supabase.from('properties').select('*');
 
     if (location) {
-      query = query.or(`title.ilike.%${location}%,description.ilike.%${location}%`);
+      // Filter by the specific location column since we are using a dropdown
+      query = query.eq('location', location);
     }
 
     if (type) {
       // Exact match on the new 'type' column
       query = query.eq('type', type);
+    }
+
+    // Sorting Logic
+    if (sort === 'price_asc') {
+      query = query.order('price', { ascending: true });
+    } else if (sort === 'price_desc') {
+      query = query.order('price', { ascending: false });
+    } else {
+      // Default: Newest first
+      query = query.order('created_at', { ascending: false });
     }
 
     const { data, error } = await query;
@@ -66,8 +77,14 @@ async function getProperties(location?: string, type?: string): Promise<Property
   }
 }
 
-export default async function Home({ searchParams }: { searchParams: { location?: string, type?: string } }) {
-  const properties = await getProperties(searchParams.location, searchParams.type);
+// Define the expected shape of the properties (Awaited)
+interface SearchParamsProps {
+  searchParams: Promise<{ location?: string, type?: string, sort?: string }>;
+}
+
+export default async function Home(props: SearchParamsProps) {
+  const searchParams = await props.searchParams;
+  const properties = await getProperties(searchParams.location, searchParams.type, searchParams.sort);
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans">

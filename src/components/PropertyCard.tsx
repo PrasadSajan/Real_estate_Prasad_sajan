@@ -93,14 +93,7 @@ export default function PropertyCard({ id, imageSrc, imageAlt, title, title_mr, 
         <div className="flex justify-between items-center border-t border-gray-100 pt-4 mt-auto">
           <p className="text-xl font-bold text-accent">{formatPrice(price)}</p>
           <div className="flex gap-4">
-            {latitude && longitude && onViewMap && (
-              <button
-                onClick={(e) => { e.stopPropagation(); onViewMap(); }}
-                className="text-primary text-sm font-semibold uppercase tracking-wide border-b-2 border-transparent hover:border-accent transition-colors"
-              >
-                Map
-              </button>
-            )}
+
             <button className="text-primary text-sm font-semibold uppercase tracking-wide border-b-2 border-transparent hover:border-accent transition-colors">
               {t.cardDetails || 'Details'}
             </button>

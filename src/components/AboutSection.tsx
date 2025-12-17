@@ -18,7 +18,7 @@ export default function AboutSection() {
         </p>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           <div className="text-center">
             <p className="text-4xl md:text-5xl font-bold text-accent mb-2">15+</p>
             <p className="text-gray-400 text-sm uppercase tracking-wider">Years Experience</p>
@@ -35,7 +35,7 @@ export default function AboutSection() {
             <p className="text-4xl md:text-5xl font-bold text-accent mb-2">25+</p>
             <p className="text-gray-400 text-sm uppercase tracking-wider">Awards Won</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
