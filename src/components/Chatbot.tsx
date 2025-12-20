@@ -2,8 +2,10 @@
 
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Chatbot() {
+    const { t } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<{ role: 'user' | 'model'; parts: string }[]>([
         { role: 'model', parts: "Hello! I'm your AI Property Concierge. Ask me about our available properties!" }
@@ -20,13 +22,10 @@ export default function Chatbot() {
         scrollToBottom();
     }, [messages, isOpen]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!input.trim() || isLoading) return;
+    const sendMessage = async (text: string) => {
+        if (!text.trim() || isLoading) return;
 
-        const userMessage = input.trim();
-        setInput('');
-        setMessages(prev => [...prev, { role: 'user', parts: userMessage }]);
+        setMessages(prev => [...prev, { role: 'user', parts: text }]);
         setIsLoading(true);
 
         try {
@@ -36,7 +35,7 @@ export default function Chatbot() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    message: userMessage,
+                    message: text,
                     history: messages,
                 }),
             });
@@ -54,6 +53,12 @@ export default function Chatbot() {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        sendMessage(input);
+        setInput('');
     };
 
     return (
@@ -132,13 +137,26 @@ export default function Chatbot() {
                         <div ref={messagesEndRef} />
                     </div>
 
+                    {/* Starter Chips */}
+                    <div className="px-4 py-2 bg-gray-50 border-t border-gray-100 flex gap-2 overflow-x-auto no-scrollbar scroll-smooth">
+                        <button onClick={() => sendMessage(t.chatStarterBudget)} className="whitespace-nowrap px-3 py-1.5 bg-white border border-accent/20 text-accent text-xs rounded-full hover:bg-accent hover:text-white transition-colors shadow-sm">
+                            {t.chatStarterBudget}
+                        </button>
+                        <button onClick={() => sendMessage(t.chatStarterNew)} className="whitespace-nowrap px-3 py-1.5 bg-white border border-accent/20 text-accent text-xs rounded-full hover:bg-accent hover:text-white transition-colors shadow-sm">
+                            {t.chatStarterNew}
+                        </button>
+                        <button onClick={() => sendMessage(t.chatStarterContact)} className="whitespace-nowrap px-3 py-1.5 bg-white border border-accent/20 text-accent text-xs rounded-full hover:bg-accent hover:text-white transition-colors shadow-sm">
+                            {t.chatStarterContact}
+                        </button>
+                    </div>
+
                     {/* Input */}
                     <form onSubmit={handleSubmit} className="p-3 bg-white border-t border-gray-100 flex gap-2">
                         <input
                             type="text"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            placeholder="Ask about properties..."
+                            placeholder={t.chatPlaceholder}
                             className="flex-1 px-4 py-2 bg-gray-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-accent/20"
                         />
                         <button

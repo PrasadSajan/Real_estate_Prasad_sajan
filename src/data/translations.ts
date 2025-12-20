@@ -18,8 +18,42 @@ export const translations = {
         contactEmail: "Your Email",
         contactMessage: "Your Message",
         contactButton: "Send Message",
+        // Why Choose Us
+        whyChooseUsTitle: "Why Choose Us",
+        whyChooseUsSubtitle: "We provide not just a property, but a complete real estate solution tailored to your needs.",
+        wcuNetworkTitle: "Extensive Network",
+        wcuNetworkDesc: "Access to thousands of exclusive listings across the most improved regions.",
+        wcuAgentsTitle: "Trusted Agents",
+        wcuAgentsDesc: "Our team of experienced multi-lingual agents is here to guide you every step of the way.",
+        wcuPricingTitle: "Transparent Pricing",
+        wcuPricingDesc: "No hidden fees. We believe in complete transparency and fair market prices.",
+        // Testimonials
+        testimonialsTitle: "Our Clients",
         footerRight: "© 2025 Real Estate Broker. All rights reserved.",
-        cardDetails: "Details"
+        // Chatbot
+        chatPlaceholder: "Ask about properties...",
+        chatStarterBudget: "Under ₹50 Lakhs",
+        chatStarterNew: "New Listings",
+        chatStarterContact: "Contact Info",
+        cardDetails: "Details",
+        // New Additions
+        footerQuickLinks: "Quick Links",
+        footerBrandText: "Transforming the way you buy and sell properties. We bring transparency, trust, and technology together.",
+        footerSubscribeTitle: "Newsletter",
+        footerSubscribeText: "Subscribe to get the latest property updates.",
+        footerSubscribePlaceholder: "Your Email",
+        footerSubscribeBtn: "Subscribe",
+        contactChatWhatsapp: "Chat on WhatsApp",
+        contactAvailable: "Available Mon-Sat, 9am - 6pm",
+        contactResponse: "Response within 24 hours",
+        contactSendMessageHeader: "Send us a Message",
+        heroSearchBtn: "Search",
+        heroAllLocations: "All Locations",
+        heroAllTypes: "All Types",
+        featuredSubtitle: "Discover our hand-picked selection of premium properties available for you today.",
+        sortNewest: "Newest First",
+        sortPriceLow: "Price: Low to High",
+        sortPriceHigh: "Price: High to Low"
     },
     mr: {
         headerTitle: "रिअल इस्टेट ब्रोकर",
@@ -40,7 +74,41 @@ export const translations = {
         contactEmail: "तुमचा ईमेल",
         contactMessage: "तुमचा संदेश",
         contactButton: "संदेश पाठवा",
+        // Why Choose Us
+        whyChooseUsTitle: "आम्हाला का निवडावे?",
+        whyChooseUsSubtitle: "आम्ही केवळ मालमत्ताच नाही, तर तुमच्या गरजांनुसार संपूर्ण रिअल इस्टेट समाधान देतो.",
+        wcuNetworkTitle: "विस्तृत नेटवर्क",
+        wcuNetworkDesc: "सर्वात विकसित क्षेत्रांमधील हजारो विशेष प्रॉपर्टीजमध्ये प्रवेश मिळवा.",
+        wcuAgentsTitle: "विश्वासू एजंट",
+        wcuAgentsDesc: "आमची अनुभवी एजंट्सची टीम तुम्हाला प्रत्येक पायरीवर मार्गदर्शन करण्यासाठी तत्पर आहे.",
+        wcuPricingTitle: "पारदर्शक व्यवहार",
+        wcuPricingDesc: "कोणतीही छुपी फी नाही. आमचा संपूर्ण पारदर्शकता आणि वाजवी बाजारभाव यावर विश्वास आहे.",
+        // Testimonials
+        testimonialsTitle: "आमचे ग्राहक",
         footerRight: "© २०२५ रिअल इस्टेट ब्रोकर. सर्व हक्क राखीव.",
-        cardDetails: "तपशील"
+        // Chatbot
+        chatPlaceholder: "प्रॉपर्टीबद्दल विचारा...",
+        chatStarterBudget: "₹५० लाखांच्या आत",
+        chatStarterNew: "नवीन यादी",
+        chatStarterContact: "संपर्क माहिती",
+        cardDetails: "तपशील",
+        // New Additions
+        footerQuickLinks: "महत्त्वाचे दुवे",
+        footerBrandText: "मालमत्ता खरेदी आणि विक्रीची पद्धत बदलत आहोत. आम्ही पारदर्शकता, विश्वास आणि तंत्रज्ञान एकत्र आणतो.",
+        footerSubscribeTitle: "न्यूजलेटर",
+        footerSubscribeText: "नवीनतम मालमत्ता अद्यतने मिळवण्यासाठी सबस्क्राईब करा.",
+        footerSubscribePlaceholder: "तुमचा ईमेल",
+        footerSubscribeBtn: "सबस्क्राईब करा",
+        contactChatWhatsapp: "व्हॉट्सॲपवर बोला",
+        contactAvailable: "उपलब्ध: सोम-शनि, सकाळी ९ - संध्याकाळी ६",
+        contactResponse: "२४ तासांत प्रतिसाद",
+        contactSendMessageHeader: "आम्हाला संदेश पाठवा",
+        heroSearchBtn: "शोधा",
+        heroAllLocations: "सर्व ठिकाणे",
+        heroAllTypes: "सर्व प्रकार",
+        featuredSubtitle: "आजच तुमच्यासाठी उपलब्ध असलेल्या आमच्या निवडक प्रीमियम मालमत्ता शोधा.",
+        sortNewest: "नवीनतम प्रथम",
+        sortPriceLow: "किंमत: कमी ते जास्त",
+        sortPriceHigh: "किंमत: जास्त ते कमी"
     }
 };

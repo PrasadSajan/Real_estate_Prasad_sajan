@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
         const { data: properties, error } = await supabase
             .from('properties')
             .select('id, title, price, location, type, description')
-            .limit(10); // Limit context for safety/speed
+            .limit(50); // Limit context for safety/speed
 
         if (error) {
             console.error('DEBUG: Supabase Error:', JSON.stringify(error));
@@ -32,9 +32,11 @@ export async function POST(req: NextRequest) {
         console.log(`DEBUG: Fetched ${properties?.length} properties.`);
 
         // 2. Construct System Prompt
-        const listingsContext = properties?.map(p =>
-            `- ${p.title} (${p.type}): ₹${p.price.toLocaleString('en-IN')}, ${p.location}. Price: ₹${p.price}. Desc: ${p.description.substring(0, 100)}...`
-        ).join('\n') || "No properties currently listed.";
+        const listingsContext = properties?.map(p => {
+            // Ensure we provide a clean numeric value for the AI to understand "under 10 lakhs"
+            const rawPrice = parseInt(p.price.toString().replace(/[^0-9]/g, '') || '0');
+            return `- ${p.title} (${p.type}): ₹${p.price}, Location: ${p.location}. (RawValue: ${rawPrice}). Desc: ${p.description.substring(0, 100)}...`;
+        }).join('\n') || "No properties currently listed.";
 
         const systemPrompt = `
       You are a friendly and professional Real Estate Concierge for 'Real Estate Broker' agency.
@@ -53,6 +55,7 @@ export async function POST(req: NextRequest) {
       3. Prices are in Indian Rupees (₹).
       4. If asked about contact info, provide the WhatsApp number: +91 86682 14431.
       5. Do not invent properties.
+      6. LANGUAGE ADAPTATION: Always reply in the same language the user uses. If the user asks in Marathi, you MUST reply in Marathi (Devanagari script), while keeping property details (like prices/names) accurate.
       
       User Message: ${message}
     `;

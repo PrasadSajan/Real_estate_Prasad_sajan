@@ -68,7 +68,7 @@ export default function Hero() {
     router.push(`/?${params.toString()}`);
   };
 
-  const currentTypeLabel = propertyTypes.find(t => t.name === propertyType)?.label || 'All Types';
+  const currentTypeLabel = propertyTypes.find(t => t.name === propertyType)?.label || t.heroAllTypes;
 
   return (
     <section id="home" className="relative h-[90vh] flex items-center justify-center overflow-hidden">
@@ -109,7 +109,7 @@ export default function Hero() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                     </svg>
                   </span>
-                  <span>{location || 'All Locations'}</span>
+                  <span>{location || t.heroAllLocations}</span>
                 </div>
                 <span className={`text-accent transition-transform duration-300 ${isLocationOpen ? 'rotate-180' : ''}`}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -127,7 +127,7 @@ export default function Hero() {
                         onClick={() => { setLocation(''); setIsLocationOpen(false); }}
                         className={`w-full text-left px-6 py-3 text-lg transition-colors hover:bg-gray-50 ${location === '' ? 'text-accent font-bold bg-accent/5' : 'text-gray-700'}`}
                       >
-                        All Locations
+                        {t.heroAllLocations}
                       </button>
                     </li>
                     {locations.map((loc) => (
@@ -170,7 +170,7 @@ export default function Hero() {
                         onClick={() => { setPropertyType(''); setIsTypeOpen(false); }}
                         className={`w-full text-left px-6 py-3 text-lg transition-colors hover:bg-gray-50 ${propertyType === '' ? 'text-accent font-bold bg-accent/5' : 'text-gray-700'}`}
                       >
-                        All Types
+                        {t.heroAllTypes}
                       </button>
                     </li>
                     {propertyTypes.map((type) => (
@@ -190,7 +190,7 @@ export default function Hero() {
             </div>
 
             <button type="submit" className="bg-accent hover:bg-accent-hover text-white text-lg font-bold py-4 px-10 rounded-xl transition duration-300 shadow-lg hover:shadow-accent/50 active:scale-95 flex items-center justify-center gap-2">
-              <span>Search</span>
+              <span>{t.heroSearchBtn}</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>

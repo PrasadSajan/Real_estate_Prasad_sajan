@@ -36,12 +36,12 @@ export default function FeaturedProperties({ properties }: { properties: Propert
     const currentSort = searchParams.get('sort') || 'newest';
 
     const sortOptions = [
-        { value: 'newest', label: 'Newest First' },
-        { value: 'price_asc', label: 'Price: Low to High' },
-        { value: 'price_desc', label: 'Price: High to Low' }
+        { value: 'newest', label: t.sortNewest },
+        { value: 'price_asc', label: t.sortPriceLow },
+        { value: 'price_desc', label: t.sortPriceHigh }
     ];
 
-    const currentLabel = sortOptions.find(opt => opt.value === currentSort)?.label || 'Newest First';
+    const currentLabel = sortOptions.find(opt => opt.value === currentSort)?.label || t.sortNewest;
 
     const handleSortSelect = (value: string) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -74,7 +74,7 @@ export default function FeaturedProperties({ properties }: { properties: Propert
                         {t.featuredProperties}
                         <span className="block h-1 w-24 bg-accent mt-4 rounded-full"></span>
                     </h2>
-                    <p className="text-gray-600 mt-4 max-w-2xl">Discover our hand-picked selection of premium properties available for you today.</p>
+                    <p className="text-gray-600 mt-4 max-w-2xl">{t.featuredSubtitle}</p>
                 </div>
 
                 {/* Custom Sort Dropdown */}

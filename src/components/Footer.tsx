@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-2xl font-serif font-bold text-white">Real Estate</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Transforming the way you buy and sell properties. We bring transparency, trust, and technology together.
+              {t.footerBrandText}
             </p>
             <div className="flex gap-4">
               {/* Social Icons */}
@@ -36,18 +36,18 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-white">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-6 text-white">{t.footerQuickLinks}</h4>
             <ul className="space-y-3">
-              <li><a href="#home" className="text-gray-400 hover:text-accent transition-colors">Home</a></li>
-              <li><a href="#properties" className="text-gray-400 hover:text-accent transition-colors">Properties</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-accent transition-colors">Contact</a></li>
+              <li><a href="#home" className="text-gray-400 hover:text-accent transition-colors">{t.navHome}</a></li>
+              <li><a href="#properties" className="text-gray-400 hover:text-accent transition-colors">{t.navProperties}</a></li>
+              <li><a href="#about" className="text-gray-400 hover:text-accent transition-colors">{t.navAbout}</a></li>
+              <li><a href="#contact" className="text-gray-400 hover:text-accent transition-colors">{t.navContact}</a></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-white">Contact Us</h4>
+            <h4 className="text-lg font-bold mb-6 text-white">{t.contactTitle}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 flex-shrink-0 text-accent">
@@ -73,12 +73,12 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-white">Newsletter</h4>
-            <p className="text-gray-400 text-sm mb-4">Subscribe to get the latest property updates.</p>
+            <h4 className="text-lg font-bold mb-6 text-white">{t.footerSubscribeTitle}</h4>
+            <p className="text-gray-400 text-sm mb-4">{t.footerSubscribeText}</p>
             <form className="space-y-3">
-              <input type="email" placeholder="Your Email" className="w-full bg-white/10 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent" />
+              <input type="email" placeholder={t.footerSubscribePlaceholder} className="w-full bg-white/10 border border-gray-700 rounded-lg py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-accent" />
               <button className="w-full bg-accent hover:bg-accent-hover text-white font-bold py-3 px-4 rounded-lg transition-colors text-sm uppercase tracking-wide">
-                Subscribe
+                {t.footerSubscribeBtn}
               </button>
             </form>
           </div>
@@ -86,7 +86,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-900 pt-8 text-center">
           <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Real Estate. All rights reserved.
+            {t.footerRight}
           </p>
         </div>
       </div>

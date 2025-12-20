@@ -1,6 +1,9 @@
 'use client';
 
+import { useLanguage } from '../context/LanguageContext';
+
 export default function Testimonials() {
+    const { t } = useLanguage();
     const reviews = [
         {
             name: "Rajesh Patil",
@@ -25,7 +28,7 @@ export default function Testimonials() {
     return (
         <section className="py-24 bg-primary text-white overflow-hidden">
             <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold font-serif text-center mb-16">Client Stories</h2>
+                <h2 className="text-4xl font-bold font-serif text-center mb-16">{t.testimonialsTitle}</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {reviews.map((review, idx) => (
