@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Real Estate Platform
 
-## Getting Started
+A premium, localized real estate website built with Next.js 16, Supabase, and Tailwind CSS.
+This platform allows users to browse properties with an interactive map, inquire about listings, and includes a full admin dashboard for property management.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   **Browse Properties**: Advanced filtering and search for improved discovery.
+-   **Interactive Maps**: Dynamic property locations using Leaflet (OpenStreetMap) integration.
+-   **Property Details**: High-quality image galleries and detailed specifications.
+-   **AI Property Concierge**: Integrated Gemini-powered chatbot to answer user questions about listings.
+-   **Localization**: Full Marathi translation support for wider reach.
+-   **Admin Dashboard**:
+    -   Secure Admin Login.
+    -   Manage Properties (Add, Edit, Delete).
+    -   Admin Inbox: View and manage customer inquiries.
+    -   Map Picker for setting property coordinates.
+-   **Contact System**: Integrated inquiry forms with Toast notifications and email/database storage.
+-   **Responsive Design**: Mobile-first, glassmorphism-inspired UI designed with Tailwind CSS.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   **Frontend**: Next.js 16 (App Router), React 19, Tailwind CSS
+-   **Backend**: Supabase (PostgreSQL, Auth, Storage)
+-   **Maps**: Leaflet, React-Leaflet
+-   **AI**: Google Gemini API (`@google/generative-ai`)
+-   **Icons**: Lucide React
+-   **Language**: TypeScript
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🏁 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+-   Node.js 18.17 or later
+-   npm or yarn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/PrasadSajan/Real_estate_Prasad_sajan.git
+    cd real-estate-website
+    ```
 
-## Deploy on Vercel
+2.  Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3.  **Environment Variables**:
+    Create a `.env.local` file in the root directory and add the following keys:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    # Supabase Configuration
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+    
+    # AI Chatbot (Gemini)
+    GEMINI_API_KEY=your_gemini_api_key
+    ```
+
+4.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📂 Project Structure
+
+-   `src/app`: App directory (Pages & API Routes).
+-   `src/components`: Reusable UI components (Hero, PropertyCard, Maps, etc.).
+-   `src/lib`: Utility functions and Supabase client.
+-   `src/context`: React Contexts (Language, etc.).
+-   `src/types`: TypeScript interfaces.
