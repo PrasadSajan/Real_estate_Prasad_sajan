@@ -10,9 +10,15 @@ This platform allows users to browse properties with an interactive map, inquire
 -   **Property Details**: High-quality image galleries and detailed specifications.
 -   **AI Property Concierge**: Integrated Gemini-powered chatbot to answer user questions about listings.
 -   **Localization**: Full Marathi translation support for wider reach.
+-   **Mobile Application**:
+    -   Native iOS and Android app built with Expo.
+    -   **Owner Portal**: Full property management from mobile (Add Listings, Upload Photos).
+    -   **Geolocation**: Auto-detect location for new listings.
+    -   **Unified Design**: Consistent UI/UX with the web platform.
 -   **Admin Dashboard**:
     -   Secure Admin Login.
     -   Manage Properties (Add, Edit, Delete).
+    -   **Smart Forms**: Conditional fields (e.g., Bedroom/Bathroom counts) based on property type (e.g., Flat vs. Plot).
     -   Admin Inbox: View and manage customer inquiries.
     -   Map Picker for setting property coordinates.
 -   **Contact System**: Integrated inquiry forms with Toast notifications and email/database storage.
@@ -21,10 +27,11 @@ This platform allows users to browse properties with an interactive map, inquire
 ## 🛠️ Tech Stack
 
 -   **Frontend**: Next.js 16 (App Router), React 19, Tailwind CSS
+-   **Mobile**: React Native, Expo, NativeWind
 -   **Backend**: Supabase (PostgreSQL, Auth, Storage)
--   **Maps**: Leaflet, React-Leaflet
+-   **Maps**: Leaflet, React-Leaflet, Expo Location
 -   **AI**: Google Gemini API (`@google/generative-ai`)
--   **Icons**: Lucide React
+-   **Icons**: Lucide React, Ionicons
 -   **Language**: TypeScript
 
 ## 🏁 Getting Started

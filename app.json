@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "1777c2ef-f6c4-49da-bd9d-b70769718e99"
+      }
+    },
+    "android": {
+      "package": "com.prasadsajan.realestatewebsite"
+    }
+  }
+}

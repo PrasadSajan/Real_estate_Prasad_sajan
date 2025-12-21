@@ -22,15 +22,18 @@ interface Property {
     title_mr?: string;
     description: string;
     description_mr?: string;
-    price: number; // Changed from string to number
+    price: number;
     imagesrc: string;
     imagealt: string;
     images?: string[];
-    latitude: number | null; // Changed from number? to number | null
-    longitude: number | null; // Changed from number? to number | null
-    location: string; // Added location
+    latitude: number | null;
+    longitude: number | null;
+    location: string;
     type?: string;
     views?: number;
+    bedrooms?: number;
+    bathrooms?: number;
+    area_sqft?: number;
 }
 
 interface Inquiry {
@@ -62,14 +65,17 @@ export default function AdminDashboard() {
         title_mr: '',
         description: '',
         description_mr: '',
-        price: undefined, // Changed to undefined for number type
-        location: '', // Added location default
+        price: undefined,
+        location: '',
         imagesrc: '',
         imagealt: '',
         images: [],
         latitude: undefined,
         longitude: undefined,
-        type: ''
+        type: '',
+        bedrooms: 0,
+        bathrooms: 0,
+        area_sqft: undefined
     });
 
     useEffect(() => {
@@ -355,22 +361,16 @@ export default function AdminDashboard() {
                                             onChange={e => setFormData({ ...formData, title_mr: e.target.value })}
                                         />
 
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             <input
                                                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none font-bold text-gray-700"
-                                                placeholder="Price (e.g. 4500000)"
+                                                placeholder="Price (₹)"
                                                 type="number"
-                                                value={formData.price ?? ''} // Handle undefined
+                                                value={formData.price ?? ''}
                                                 onChange={e => {
                                                     const val = e.target.value;
                                                     setFormData({ ...formData, price: val === '' ? undefined : parseFloat(val) });
                                                 }}
-                                            />
-                                            <input
-                                                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
-                                                placeholder="Area (e.g. Baner)"
-                                                value={formData.location || ''}
-                                                onChange={e => setFormData({ ...formData, location: e.target.value })}
                                             />
                                             <select
                                                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
@@ -383,6 +383,74 @@ export default function AdminDashboard() {
                                                 ))}
                                             </select>
                                         </div>
+
+                                        {/* Row 2: Area & Location */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <input
+                                                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
+                                                placeholder="Area Sqft (e.g. 1200)"
+                                                type="number"
+                                                value={formData.area_sqft ?? ''}
+                                                onChange={e => {
+                                                    const val = e.target.value;
+                                                    setFormData({ ...formData, area_sqft: val === '' ? undefined : parseFloat(val) });
+                                                }}
+                                            />
+                                            <input
+                                                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
+                                                placeholder="Location Name (e.g. Baner)"
+                                                value={formData.location || ''}
+                                                onChange={e => setFormData({ ...formData, location: e.target.value })}
+                                            />
+                                        </div>
+
+                                        {/* Row 3: Bed/Bath (Conditional) */}
+                                        {/* Row 3: Bed/Bath (Conditional) */}
+                                        {['apartment', 'flat', 'house', 'villa', 'penthouse', 'home', 'bungalow'].some(t => formData.type?.toLowerCase().includes(t)) && (
+                                            <div className="grid grid-cols-2 gap-4 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                                                <div>
+                                                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 block">Bedrooms</label>
+                                                    <div className="flex items-center">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setFormData(prev => ({ ...prev, bedrooms: Math.max(0, (prev.bedrooms || 0) - 1) }))}
+                                                            className="w-8 h-8 bg-white rounded-l border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                                                        >-</button>
+                                                        <input
+                                                            className="w-full h-8 text-center border-t border-b border-gray-200 font-bold text-gray-700 outline-none"
+                                                            value={formData.bedrooms || 0}
+                                                            readOnly
+                                                        />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setFormData(prev => ({ ...prev, bedrooms: (prev.bedrooms || 0) + 1 }))}
+                                                            className="w-8 h-8 bg-white rounded-r border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                                                        >+</button>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1 block">Bathrooms</label>
+                                                    <div className="flex items-center">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setFormData(prev => ({ ...prev, bathrooms: Math.max(0, (prev.bathrooms || 0) - 1) }))}
+                                                            className="w-8 h-8 bg-white rounded-l border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                                                        >-</button>
+                                                        <input
+                                                            className="w-full h-8 text-center border-t border-b border-gray-200 font-bold text-gray-700 outline-none"
+                                                            value={formData.bathrooms || 0}
+                                                            readOnly
+                                                        />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setFormData(prev => ({ ...prev, bathrooms: (prev.bathrooms || 0) + 1 }))}
+                                                            className="w-8 h-8 bg-white rounded-r border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                                                        >+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+
                                     </div>
 
                                     <div className="space-y-2">

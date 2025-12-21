@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "imageSrc": "https://placehold.co/600x400?text=Row+House",
+    "imageAlt": "Row House in Tuljapur",
+    "title": "3 BHK Row House near Temple",
+    "title_mr": "मंदिराजवळ ३ BHK रो-हाऊस",
+    "description": "Spacious 3 BHK row house located just 1km from Tulja Bhavani Temple. Parking available.",
+    "description_mr": "तुळजाभवानी मंदिरापासून अवघ्या १ किमी अंतरावर प्रशस्त ३ BHK रो-हाऊस. पार्किंग उपलब्ध.",
+    "price": "₹ 45 Lakh"
+  },
+  {
+    "id": "2",
+    "imageSrc": "https://placehold.co/600x400?text=Highway+Plot",
+    "imageAlt": "Commercial Plot",
+    "title": "Commercial Plot on Highway",
+    "title_mr": "हायवे टच कमर्शियल प्लॉट",
+    "description": "2000 sq.ft. commercial plot on Solapur-Tuljapur Highway. Ideal for shops or hotel.",
+    "description_mr": "सोलापूर-तुळजापूर हायवेवर २००० चौरस फुटांचा कमर्शियल प्लॉट. दुकाने किंवा हॉटेलसाठी उत्तम.",
+    "price": "₹ 60 Lakh"
+  },
+  {
+    "id": "3",
+    "imageSrc": "https://placehold.co/600x400?text=2+BHK+Flat",
+    "imageAlt": "Modern Apartment",
+    "title": "Modern 2 BHK Flat in Vidyanagar",
+    "title_mr": "विद्यानगरमध्ये २ BHK फ्लॅट",
+    "description": "New construction with modern amenities. Water supply and lift facility available.",
+    "description_mr": "नवे बांधकाम आणि आधुनिक सोयीसुविधा. पाणीपुरवठा आणि लिफ्टची सुविधा उपलब्ध.",
+    "price": "₹ 28 Lakh"
+  }
+]
