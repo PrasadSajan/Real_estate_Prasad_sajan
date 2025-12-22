@@ -12,7 +12,7 @@ interface AdminPropertyCardProps {
 
 export default function AdminPropertyCard({ title, price, imageSrc, latitude, longitude, onDelete }: AdminPropertyCardProps) {
     return (
-        <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 group">
+        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-white/40 group">
             <div className="relative h-48 w-full overflow-hidden">
                 <Image
                     src={imageSrc}

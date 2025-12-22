@@ -278,7 +278,7 @@ export default function AdminDashboard() {
     );
 
     return (
-        <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
+        <div className="min-h-screen font-sans text-gray-800 bg-gray-50 bg-[url('/images/dashboard-bg-soft.png')] bg-repeat bg-[length:500px_500px]">
             {notification && (
                 <Toast
                     message={notification.message}
@@ -287,7 +287,7 @@ export default function AdminDashboard() {
                 />
             )}
             {/* Top Navigation */}
-            <nav className="bg-white px-6 py-4 shadow-sm sticky top-0 z-50">
+            <nav className="bg-white/80 backdrop-blur-md px-6 py-4 shadow-sm sticky top-0 z-50 border-b border-white/20">
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-serif font-bold">
@@ -341,7 +341,7 @@ export default function AdminDashboard() {
 
                     {/* Add Property Form */}
                     <div className="lg:col-span-1">
-                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 sticky top-24">
+                        <div className="bg-white/80 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-white/50 sticky top-24">
                             <h2 className="text-xl font-bold mb-6 text-gray-800 flex items-center gap-2">
                                 <span className="w-1 h-6 bg-accent rounded-full"></span>
                                 New Listing
@@ -538,7 +538,7 @@ export default function AdminDashboard() {
 
                         {activeTab === 'properties' ? (
                             properties.length === 0 ? (
-                                <div className="bg-white p-12 rounded-xl border border-dashed border-gray-300 text-center">
+                                <div className="bg-white/80 backdrop-blur-lg p-12 rounded-xl border border-dashed border-gray-300 text-center shadow-sm">
                                     <div className="inline-block p-4 bg-gray-50 rounded-full mb-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-gray-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
@@ -565,7 +565,7 @@ export default function AdminDashboard() {
                         ) : (
                             /* Inbox Tab Content */
                             inquiries.length === 0 ? (
-                                <div className="bg-white p-12 rounded-xl border border-dashed border-gray-300 text-center">
+                                <div className="bg-white/80 backdrop-blur-lg p-12 rounded-xl border border-dashed border-gray-300 text-center shadow-sm">
                                     <div className="inline-block p-4 bg-gray-50 rounded-full mb-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-gray-400">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
