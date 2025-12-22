@@ -13,13 +13,13 @@ export default function Toast({ message, type, onClose, duration = 3000 }: Toast
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        setIsVisible(true);
+        const fadeTimer = setTimeout(() => setIsVisible(true), 10);
         const timer = setTimeout(() => {
             setIsVisible(false);
             setTimeout(onClose, 300); // 300ms for fade out animation
         }, duration);
 
-        return () => clearTimeout(timer);
+        return () => { clearTimeout(timer); clearTimeout(fadeTimer); };
     }, [duration, onClose]);
 
     const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';

@@ -96,7 +96,7 @@ export default function FeaturedProperties() {
         const isSaved = savedIds.includes(propertyId);
 
         // Optimistic Update
-        let newSavedIds = isSaved
+        const newSavedIds = isSaved
             ? savedIds.filter(id => id !== propertyId)
             : [...savedIds, propertyId];
         setSavedIds(newSavedIds);

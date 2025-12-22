@@ -60,9 +60,7 @@ export default function InquiryCard({ inquiry, onDelete }: InquiryCardProps) {
             </div>
 
             {inquiry.message && (
-                <div className="bg-gray-50 p-3 rounded-lg text-gray-700 text-sm italic border-l-4 border-gray-200">
-                    "{inquiry.message}"
-                </div>
+                <p className="text-gray-700 whitespace-pre-wrap mb-4 bg-gray-50 p-3 rounded-md italic border-l-4 border-gray-200">&quot;{inquiry.message}&quot;</p>
             )}
 
             {onDelete && (

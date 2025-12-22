@@ -78,10 +78,7 @@ export default function AdminDashboard() {
         area_sqft: undefined
     });
 
-    useEffect(() => {
-        checkUser();
-        fetchDashboardData();
-    }, []);
+
 
     const checkUser = async () => {
         const { data: { session } } = await supabase.auth.getSession();
@@ -160,6 +157,11 @@ export default function AdminDashboard() {
 
         setLoading(false);
     };
+
+    useEffect(() => {
+        checkUser();
+        fetchDashboardData();
+    }, []);
 
     const showNotification = (message: string, type: 'success' | 'error') => {
         setNotification({ message, type });

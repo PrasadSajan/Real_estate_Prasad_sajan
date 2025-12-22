@@ -46,7 +46,7 @@ export default function AddProperty() {
     const isResidential = ['apartment', 'flat', 'house', 'villa', 'penthouse', 'home', 'bungalow'].some(t => type?.toLowerCase().includes(t));
 
     const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
+        const result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [4, 3],
@@ -62,13 +62,13 @@ export default function AddProperty() {
     const getCurrentLocation = async () => {
         setLocating(true);
         try {
-            let { status } = await Location.requestForegroundPermissionsAsync();
+            const { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 Alert.alert('Permission to access location was denied');
                 return;
             }
 
-            let location = await Location.getCurrentPositionAsync({});
+            const location = await Location.getCurrentPositionAsync({});
             setLatitude(location.coords.latitude.toString());
             setLongitude(location.coords.longitude.toString());
         } catch (error) {

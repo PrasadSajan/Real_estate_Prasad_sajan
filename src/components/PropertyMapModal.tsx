@@ -33,7 +33,8 @@ export default function PropertyMapModal({ isOpen, onClose, latitude, longitude,
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const timer = setTimeout(() => setMounted(true), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     if (!isOpen) return null;

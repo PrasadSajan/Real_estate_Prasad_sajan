@@ -40,7 +40,7 @@ export default function Testimonials() {
                                     </svg>
                                 ))}
                             </div>
-                            <p className="text-lg italic text-gray-300 mb-6">"{review.text}"</p>
+                            <p className="text-gray-600 italic mb-4">&quot;{review.text}&quot;</p>
                             <div>
                                 <h4 className="font-bold text-white text-lg">{review.name}</h4>
                                 <p className="text-sm text-gray-400">{review.location}</p>

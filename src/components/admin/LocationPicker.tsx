@@ -48,7 +48,8 @@ export default function LocationPicker({ latitude, longitude, onLocationSelect }
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const timer = setTimeout(() => setMounted(true), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     if (!mounted) return <div className="h-[300px] w-full bg-gray-100 flex items-center justify-center">Loading Map...</div>;
