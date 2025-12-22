@@ -2,8 +2,11 @@
 ## 📅 Future Roadmap & Planned Features
 
 ### Web Application
-- [ ] **Owner Portal Enhancement**: Add fields for Bedroom and Bathroom counts when adding a new flat.
+- [x] **Owner Portal Enhancement**: Add fields for Bedroom and Bathroom counts when adding a new flat. (Live & Database Synced)
 - [ ] **Search Tab**: Re-enable Bedroom and Bathroom display once the backend supports this data (currently hidden).
+
+### Admin Dashboard Design
+- [x] **Revamp UI**: Implement glassmorphism and premium background pattern for Login and Dashboard.
 
 ### Mobile Application
 - [ ] **Saved Properties**: Implement local storage for favorites using `expo-secure-store` or async storage.
